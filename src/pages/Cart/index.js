@@ -8,32 +8,42 @@ import {
   Info,
   Quantity,
   Subtotal,
+  CompraFinal,
 } from './styles';
 
 function Cart() {
-  // eslint-disable-next-line no-unused-vars
   const { state, setState } = useContext(CartContext);
+  const totalPagar = state.cart.reduce(
+    (acc, travel) => acc + travel.quantity * travel.price,
+    0,
+  );
   return (
     <Container>
       <ContainerList>
         {state.cart.map((el) => (
           <TravelItem>
-            <img src={el.photo} alt={el.titel} />
+            <img src={el.photo} alt={el.title} />
             <Info>
-              <p>{el.titel}</p>
+              <p>{el.title}</p>
               <strong>{el.price}</strong>
             </Info>
-            <Quantity readOnly type="number" value={1} />
+            <Quantity readOnly type="number" value={el.quantity} />
             <Subtotal>
-              <p>200.00</p>
+              <p>{el.quantity * el.price}</p>
               <button type="button">
                 <MdDelete size={24} color="#0676d9" />
               </button>
             </Subtotal>
           </TravelItem>
         ))}
+        <CompraFinal>
+          <p>
+            TOTAL <strong>$ {totalPagar}</strong>
+          </p>
+        </CompraFinal>
       </ContainerList>
     </Container>
   );
 }
+
 export default Cart;

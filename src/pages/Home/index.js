@@ -1,11 +1,10 @@
 import React, { useEffect, useState, useContext } from 'react';
 import { MdAddShoppingCart } from 'react-icons/md';
+import CartContext from '../../context/cart';
 import { Container, List, Unit } from './styles';
 import api from '../../services/api';
-import CartContext from '../../context/cart';
 
 function Home() {
-  // eslint-disable-next-line no-unused-vars
   const [travelList, setTravelList] = useState([]);
   const { state, setState } = useContext(CartContext);
 
@@ -19,7 +18,13 @@ function Home() {
 
   function handleAddToCart(travel) {
     const copyCart = [...state.cart];
-    copyCart.push(travel);
+    const travelIndex = copyCart.findIndex((el) => el.id === travel.id);
+    if (travelIndex >= 0) {
+      copyCart[travelIndex].quantity += 1;
+    } else {
+      copyCart.push({ ...travel, quantity: 1 });
+    }
+
     setState({
       cart: copyCart,
     });
@@ -37,7 +42,7 @@ function Home() {
               <div>
                 <MdAddShoppingCart size={16} color="#fff" />
               </div>
-              <span>Agregar al Carrito</span>
+              <span>Agregar al carrito</span>
             </button>
           </Unit>
         ))}
@@ -45,4 +50,5 @@ function Home() {
     </Container>
   );
 }
+
 export default Home;

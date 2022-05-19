@@ -65,3 +65,29 @@ export const Subtotal = styled.div`
     margin-right: 10px;
   }
 `;
+
+export const CompraFinal = styled.p`
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  align-items: right;
+  strong {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 29px;
+    letter-spacing: -0.02em;
+    color: #000000;
+    margin-left: 20px;
+  }
+  p {
+    grid-column: 4;
+    margin-top: 40px;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 20px;
+    color: #999999;
+  }
+`;

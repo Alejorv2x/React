@@ -47,16 +47,17 @@ export const Unit = styled.li`
     border-radius: 5px;
     display: flex;
     align-items: center;
-    div {
-      display: flex;
-      align-items: center;
-      padding: 12px;
-      background: rgb(0, 0, 0, 0.1);
-    }
-    span {
-      flex: 1;
-      text-align: center;
-      font-weight: 600;
-    }
+    cursor: pointer;
+  }
+  div {
+    display: flex;
+    align-items: center;
+    padding: 12px;
+    background: rgba(0, 0, 0, 0.1);
+  }
+  span {
+    flex: 1;
+    text-align: center;
+    font-weight: 600;
   }
 `;

@@ -8,12 +8,14 @@ const DEFAULT_VALUE = {
 };
 
 const CartContext = createContext(DEFAULT_VALUE);
+
 function CartContextProvider({ children }) {
   const [state, setState] = useState(DEFAULT_VALUE.state);
+
   return (
-    <CartContextProvider value={{ state, setState }}>
+    <CartContext.Provider value={{ state, setState }}>
       {children}
-    </CartContextProvider>
+    </CartContext.Provider>
   );
 }
 
